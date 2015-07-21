@@ -2,7 +2,7 @@
 class MainDo extends DIDo {
 
     function start() {
-        die('极客君生成中..');
+        die('极客君Fuck中..');
     }
 
 }
