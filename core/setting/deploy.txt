@@ -15,7 +15,7 @@ rm -f -r www.acggeek.com.trash/
 
 
 # pull方式更新
-#（前置命令：cd /home/wwwsrc; git clone https://github.com/Ltre/AcgGeek.git ）
+#（前置命令：mkdir /home/wwwbackup; mkdir /home/wwwsrc; cd /home/wwwsrc; git clone https://github.com/Ltre/AcgGeek.git ）
 
 
 cd /home/wwwsrc/AcgGeek
