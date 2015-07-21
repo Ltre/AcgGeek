@@ -3,14 +3,14 @@
 
 mkdir /home/wwwbackup/
 cd /home/wwwroot/
-tar -cf /home/wwwbackup/acggeek.com.tar  acggeek.com/
+tar -cf /home/wwwbackup/www.acggeek.com.tar  www.acggeek.com/
 git clone https://github.com/Ltre/AcgGeek.git
 rm -f -r AcgGeek/core/data/
-mv acggeek.com/core/data/  AcgGeek/core/data/
-mv acggeek.com/  acggeek.com.trash/
-mv AcgGeek/ acggeek.com/
-chmod -R 767 acggeek.com/core/data/
-rm -f -r acggeek.com.trash/
+mv www.acggeek.com/core/data/  AcgGeek/core/data/
+mv www.acggeek.com/  www.acggeek.com.trash/
+mv AcgGeek/ www.acggeek.com/
+chmod -R 767 www.acggeek.com/core/data/
+rm -f -r www.acggeek.com.trash/
 
 
 
@@ -22,11 +22,11 @@ cd /home/wwwsrc/AcgGeek
 git pull
 cp /home/wwwsrc/AcgGeek -r  /home/wwwroot/AcgGeek
 cd /home/wwwroot
-tar -cf /home/wwwbackup/acggeek.com.tar  acggeek.com/
+tar -cf /home/wwwbackup/www.acggeek.com.tar  www.acggeek.com/
 rm -f -r AcgGeek/core/data/
-mv acggeek.com/core/data/  AcgGeek/core/data/
-mv acggeek.com/  acggeek.com.trash/
-mv AcgGeek/ acggeek.com/
-chmod -R 767 acggeek.com/core/data/
-rm -f -r acggeek.com.trash/
+mv www.acggeek.com/core/data/  AcgGeek/core/data/
+mv www.acggeek.com/  www.acggeek.com.trash/
+mv AcgGeek/ www.acggeek.com/
+chmod -R 767 www.acggeek.com/core/data/
+rm -f -r www.acggeek.com.trash/
 
