@@ -1,0 +1,25 @@
+a:hover, .custom_block1 li.active a, .custom_block1 li.active a i, .twitter_row .tweet a:hover, .preve:hover, .nexte:hover, .breadcrumbIn ul li a:hover, .tags a:hover, .services [class^="grid_"]:hover .s_icon, 
+.services .tbutton, .f_meta a:hover, .p_details a:hover, .filterable li.current a, .filterable li a:hover, .load_more_portfolio a:hover, .sf-menu li:hover > a, .sf-menu li > a:hover, .sf-menu li.current > a, #header .search button:hover, 
+.widget .list li.current a, .widget .list li:hover a, .widget #searchwidget button:hover, #newsletters button:hover, .projectslider .flex-direction-nav a i, .countdown li p.timeRefDays, #footer a:hover, 
+.countdown li p.timeRefHours,.countdown li p.timeRefMinutes,.countdown li p.timeRefSeconds, .product_inner .price, .product_meta a:hover, .item_price .amount, .amount_single {
+	color: #8E9396
+}
+.services [class^="grid_"]:hover:after, .services .tbutton:hover, .services .tbutton:active, .pagination-tt ul li a:hover, .projectslider .flex-direction-nav a:hover, .progress-bar span, .tbutton, #toTop:hover, .tipsy-inner, #mobilepro, 
+.shop .product .sale {
+	background-color: #8E9396
+}
+.services [class^="grid_"]:hover, .services .tbutton, .filterable li.current a, .filterable li a:hover, .load_more_portfolio a:hover, .sf-menu li:hover > a, .sf-menu li > a:hover, .sf-menu li.current > a, #header .search input:focus, 
+.widget .list li.current a, .widget .list li:hover a, .widget #searchwidget input:focus, #newsletters input:focus, .coupon_input:focus, #track_input:focus, #contactForm #senderName:focus, #contactForm #senderEmail:focus, 
+#contactForm #message:focus {
+	border-color: #8E9396
+}
+::selection{background:#8E9396}
+::-moz-selection{background:#8E9396}
+.tabs li a.active {border-top: 2px solid #8E9396}
+.tipsy-w .tipsy-arrow:before {border-right: 6px solid #8E9396}
+.tipsy-s .tipsy-arrow:before, 
+.tipsy-e .tipsy-arrow:before {border-top: 6px solid #8E9396}
+.sf-menu li.current > a:before, .tipsy-n 
+.tipsy-arrow:before {border-bottom: 6px solid #8E9396}
+
+.tbutton:hover {background: #2C2C2C}

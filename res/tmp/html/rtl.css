@@ -1,0 +1,162 @@
+body {direction: rtl}
+.sliderr, .anyClass, #toTop, .twitter_row, .pp_pic_holder {direction: ltr}
+.logo, .sf-menu, .social a, .sf-menu li, .foot-menu li, .product_inner .price {float: right}
+#header .search, .social-head, .rating {float: left}
+.site_description {
+	margin: 44px 10px 36px 0;
+	border-left: 0;
+	border-right: 1px solid #DCDCDC;
+	float: right;
+	padding: 0 20px 0 0;
+}
+#header .search button {
+	right: auto;
+	left: 12px
+}
+.sf-menu li:hover ul, .sf-menu li.sfHover ul {
+	left: auto;
+	right: 0
+}
+ul.sf-menu li li:hover ul, ul.sf-menu li li.sfHover ul {
+	right: 172px;
+	left: auto
+}
+.sf-menu i, .custom_block1 ul li i {
+	margin-left: 8px;
+	margin-right: 0
+}
+li li a .sf-sub-indicator {
+	top: 8px;
+	left: 6%;
+	right: auto;
+	-webkit-transform: rotate(-180deg);
+	-moz-transform: rotate(-180deg);
+	-ms-transform: rotate(-180deg);
+	-o-transform: rotate(-180deg);
+}
+.sf-menu li li a.sf-with-ul {
+	padding-right: 15px
+}
+.services [class^="grid_"] .tbutton {
+	left: 0;
+	right: auto
+}
+.col-title {
+	padding: 0 20px 20px 0;
+	border-left: 0;
+	border-right: 1px solid #E7E7E7
+}
+.nexte {
+	right: auto;
+	left: 26px;
+	padding: 0 8px 0
+}
+.preve {
+	right: auto;
+	left: 0;
+	padding: 0
+}
+.tten {display: -webkit-grid}
+.sf-menu a.sf-with-ul {
+	padding-right: 20px;
+	padding-left: 30px
+}
+a > .sf-sub-indicator {
+	right: auto;
+	left: 8%
+}
+.contact_page .col-title {padding: 0 20px 0 0}
+.grid_1, .grid_2, .grid_3, .grid_4, .grid_5, .grid_6, .grid_7, .grid_8, .grid_9, .grid_10, .grid_11, .grid_12 {
+	float: right
+}
+.alpha {
+	margin-right: 1% !important;
+	margin-left: 0 !important;
+}
+.omega {
+	margin-left: 1% !important;
+	margin-right: 0 !important;
+}
+a.notification-close {
+	left: 20px;
+	right: auto
+}
+.notification-box p i {
+	padding-left: 10px;
+	border-left: 1px solid;
+	margin-left: 10px;
+	padding-right: 0;
+	border-right: 0;
+	margin-right: 0
+}
+.progress-bar .progress-bar-text {
+	right: 8px;
+	left: auto
+}
+.page-title {padding: 32px 20px 0 0}
+.breadcrumbIn {padding: 5px 20px 40px 0}
+.breadcrumbIn li:before {
+	right: -4px;
+	left: auto;
+}
+.breadcrumbIn ul li:first-child {padding: 0 0 0 10px}
+.loop_box_one .date i, .tab-content-items i, .tags i, .loop_box_one .view i, .list i {
+	padding-left: 4px;
+	padding-right: 0
+}
+.tab-content-items .post-thumbnail {
+	float: right;
+	margin: 0 0 0 10px
+}
+.tabs li {
+	float: right;
+	margin: 0
+}
+.tabs li a {
+	border-right: 0;
+	border-left: 1px solid #E6E6E6
+}
+.progress-bar span {float: right}
+#testimonials .flex-direction-nav .flex-next {
+	right: auto;
+	left: 18px
+}
+#testimonials .flex-direction-nav .flex-prev {
+	right: auto;
+	left: 0
+}
+.testimonial-s .testimonial-details {
+	margin: 0px 50px 8px 0;
+	float: right;
+	text-align: right
+}
+.testimonial-arrow {
+	right: 40px;
+	left: auto
+}
+.testimonial-arrow2 {
+	border-width: 20px 0 0 20px;
+	right: 20px;
+	left: auto
+}
+.testimonial-details2 {
+	padding: 10px 10px 0;
+	float: right
+}
+.client-avat {
+	right: 2px;
+	left: auto;
+}
+.widget #searchwidget button, #newsletters button {
+	left: 14px;
+	right: auto
+}
+.widget .list li a span, .left-sidebar .posts {float: left}
+.portfolio_single .col-title {padding: 0 20px 20px 0}
+.project_links a:first-child {margin-left: 10px}
+.project_links a:last-child {margin-left: 0}
+.shop .product .sale {
+	right: -22px;
+	left: auto;
+}
+table.shop_table, .woocommerce table.shop_table {text-align: right}
