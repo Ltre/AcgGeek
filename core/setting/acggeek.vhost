@@ -37,8 +37,8 @@ if ( $query_string ~* ".*[\;'\<\>].*" ){
         }
 
 location / {
-     if (!-e $request_filename) {
-          rewrite ~*. /index.php last;
+        if (!-e $request_filename) {
+				rewrite ~*. /index.php last;
                 }
         }
 
