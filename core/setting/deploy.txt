@@ -9,6 +9,7 @@ rm -f -r AcgGeek/core/data/
 mv www.acggeek.com/core/data/  AcgGeek/core/data/
 mv www.acggeek.com/  www.acggeek.com.trash/
 mv AcgGeek/ www.acggeek.com/
+rm www.acggeek.com/.git -r -f
 chmod -R 767 www.acggeek.com/core/data/
 rm -f -r www.acggeek.com.trash/
 
@@ -27,6 +28,7 @@ rm -f -r AcgGeek/core/data/
 mv www.acggeek.com/core/data/  AcgGeek/core/data/
 mv www.acggeek.com/  www.acggeek.com.trash/
 mv AcgGeek/ www.acggeek.com/
+rm www.acggeek.com/.git -r -f
 chmod -R 767 www.acggeek.com/core/data/
 rm -f -r www.acggeek.com.trash/
 
