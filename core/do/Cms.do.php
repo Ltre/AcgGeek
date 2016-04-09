@@ -5,6 +5,10 @@ class CmsDo extends DIDo {
     //http://acggeek.dev/?test
     //http://acggeek.dev/?list
     function get(){
+        if (in_array(DI_REGEXP_SHELL, array('main/start'))) {
+            dispatch('main/start');
+        }
+        
         $setpath = preg_replace('/^setmirror\//i', '', DI_REGEXP_SHELL);
         if ($setpath != DI_REGEXP_SHELL) { //set mirror
             file_put_contents(DI_DATA_PATH.'cache/'.sha1($setpath), arg('data'));
