@@ -29,7 +29,8 @@ class DIUrlShell {
      */
     static function regexpshell(){
         return array(
-            '/diyroute(\/[^\/]+)*$/i' => 'diyroute',
+            //'/diyroute(\/[^\/]+)*$/i' => 'diyroute',//禁用示例
+            '/([^\/]+\/?)+$/i' => 'main/cms',
         );
     }
     
