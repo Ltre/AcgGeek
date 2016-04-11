@@ -15,9 +15,6 @@ class DIRouteRewrite {
         '://acggeek.webdev.duowan.com' => 'main/start',
         
         '<D>' => '<D>/start',
-        '<D>.htm' => '<D>/start',
-        '<D>.html' => '<D>/start',
-        
         '<D>/<F>' => '<D>/<F>',
         '<D>-<F>' => '<D>/<F>',
         '<A>.<B>' => '<A>.<B>',
