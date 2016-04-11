@@ -12,7 +12,7 @@ class DIRouteRewrite {
         '://test.www.acggeek.com' => 'main/start',
         '://www.acggeek.com' => 'main/start',
         '://acggeek.com' => 'main/start',
-        ':acggeek.webdev.duowan.com' => 'main/start',
+        '://acggeek.webdev.duowan.com' => 'main/start',
         
         '<D>' => '<D>/start',
         '<D>.htm' => '<D>/start',
