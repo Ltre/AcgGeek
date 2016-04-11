@@ -206,41 +206,37 @@ final class DIRoute {
             if ($dontRules[$pureUri]) die;
             return;
         }
-        
+        //开始尝试重写，遇到第一个符合的即确定结果
         foreach ($rules as $k => $v) {
-            $kBackup = $k;
             $newK = '';
             if (0 !== stripos($k, '://')) {
                 $newK = '://' . $_SERVER['HTTP_HOST'] . rtrim(dirname($_SERVER['SCRIPT_NAME']), '\//') . '/' . $k;
+            } else {
+                $newK = $k;
             }
             $re = '/' . str_ireplace(
                 array('\\\\', '://', '/', '<', '>',  '.'),
                 array( '', '', '\/', '(?<', '>\w+)', '\.'),
                 $newK
             ) . '$/i';
-            $rawV = $v;
             if (preg_match($re, $reqWithoutSuffix, $matches)) {
                 foreach ($matches as $matchKey => $matchVal) {
                     $v = str_ireplace("<{$matchKey}>", $matchVal, $v);
                 }
-            }
-            if ($rawV != $v) {
                 array_unshift_withkey($request, str_replace(array('.'), array('_'), $v), '');
                 return;//此处重写成功
             }
         }
-        //执行至此处说明无规则匹配，默认将QUERY_STRING部分重写为$pureUri
-        array_unshift_withkey($request, str_replace(array('.'), array('_'), $pureUriWithoutSuffix), '');
-        
-        //没有任何规则被匹配，且当前有用的URI为空，则走DIUrlShell::$_default_shell指定的路由。
-        if ('' === $pureUri) {
-            return;
+        //当无规则可匹配，且当前有用的URL不为空时
+        if ('' != $pureUri) {
+            //若启用了DI_KILL_ON_FAIL_REWRITE，则终止。这可以减少被盲点爬虫时消耗的流量
+            if (DI_KILL_ON_FAIL_REWRITE) {
+                die;
+            }
+            //否则将QUERY_STRING部分重写为$pureUriWithoutSuffix
+            array_unshift_withkey($request, str_replace(array('.'), array('_'), $pureUriWithoutSuffix), '');
         }
-        
-        //如果还是没有任何匹配时，则作空请求处理。若启用了DI_KILL_ON_FAIL_REWRITE，则可以减少被盲点爬虫时消耗的流量
-        if (DI_KILL_ON_FAIL_REWRITE) {
-            die;
-        }
+        //无规则可匹配，但当前有用的URL为空，则走DIUrlShell::$_default_shell指定的路由。
         return;
     }
     
@@ -360,8 +356,8 @@ final class DIRoute {
                 $shell = $destShell;
                 break;
             }
-            defined('DI_REGEXP_SHELL') || define('DI_REGEXP_SHELL', '');
         }
+        defined('DI_REGEXP_SHELL') || define('DI_REGEXP_SHELL', '');
     }
     
     
