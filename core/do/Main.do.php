@@ -9,11 +9,12 @@ class MainDo extends DIDo {
     //可根据path增加或编辑内容
     function mirror(){
         $path = arg('path') ?: '';
+        $data = @file_get_contents(DI_DATA_PATH.'cache/'.sha1($path)) ?: '';
         $h = '<!DOCTYPE html><html><body>';
         $h .= '<form action="/" method="post" target="tmp">';
         $h .= '<input id="path" name="setmirror/'.$path.'" type="hidden"><br>';
         $h .= '<input id="on-writing-path" value="'.$path.'"><br>';
-        $h .= '<textarea name="data"></textarea><br>';
+        $h .= '<textarea name="data">'.$data.'</textarea><br>';
         $h .= '<input type="submit">';
         $h .= '</form>';
         $h .= '<iframe name="tmp" style="display:none;"></iframe>';
