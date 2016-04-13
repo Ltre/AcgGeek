@@ -7,7 +7,6 @@ class CmsDo extends DIDo {
     function get(){
         if (in_array(DI_REGEXP_SHELL, array('main/start', 'main/mirror'))) {
             dispatch(DI_REGEXP_SHELL);
-            die;
         }
         
         if (preg_match('/^setmirror\/(.*)$/', DI_REGEXP_SHELL, $matches)) {
