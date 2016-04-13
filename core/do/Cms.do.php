@@ -5,8 +5,9 @@ class CmsDo extends DIDo {
     //http://acggeek.dev/?test
     //http://acggeek.dev/?list
     function get(){
-        if (in_array(DI_REGEXP_SHELL, array('main/start'))) {
+        if (in_array(DI_REGEXP_SHELL, array('main/start', 'main/mirror'))) {
             dispatch(DI_REGEXP_SHELL);
+            die;
         }
         
         if (preg_match('/^setmirror\/(.*)$/', DI_REGEXP_SHELL, $matches)) {
