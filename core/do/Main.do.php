@@ -9,8 +9,8 @@ class MainDo extends DIDo {
     function mirror(){
         $h = '<!DOCTYPE html><html><body>';
         $h .= '<form id="mirrorform" action="/" method="post" target="tmp">';
-        $h .= '<input id="path" name="setmirror">';
-        $h .= '<textarea name="data"></textarea>';
+        $h .= '<input id="path" name="setmirror"><br>';
+        $h .= '<textarea name="data"></textarea><br>';
         $h .= '<input type="submit">';
         $h .= '</form>';
         $h .= '<iframe name="tmp" style="display:none;"></iframe>';
