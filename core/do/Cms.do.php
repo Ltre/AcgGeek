@@ -1,11 +1,15 @@
 <?php
 class CmsDo extends DIDo {
     
-    //http://acggeek.dev/?setmirror/test&data=testdata
-    //http://acggeek.dev/?test
-    //http://acggeek.dev/?list
+    /**
+     * 入口指令：正则指令
+     *      设置指定URL内容的接口：http://acggeek.dev/?setmirror/{自定义路径}&data={自定义内容}
+     *      删除指定URL内容的接口：http://acggeek.dev/?delmirror/{自定义路径}
+     *      访问指定URL的内容：http://acggeek.dev/?{自定义路径}
+     *      显示列表：http://acggeek.dev/?list
+     */
     function get(){
-        if (in_array(DI_REGEXP_SHELL, array('main/start', 'main/mirror'))) {
+        if (in_array(DI_REGEXP_SHELL, array('main/start', 'cms/mirror'))) {
             dispatch(DI_REGEXP_SHELL);
         }
         
@@ -22,6 +26,34 @@ class CmsDo extends DIDo {
         } else {
             echo @file_get_contents(DI_DATA_PATH.'cache/'.sha1(DI_REGEXP_SHELL));
         }
+    }
+    
+    
+    /**
+     * 入口指令：cms/mirror
+     * 工具页：可根据path增加或编辑内容
+     *      增加模式：http://acggeek.dev/?cms/mirror
+     *      编辑模式：http://acggeek.dev/?cms/mirror&path={自定义路径}
+     */
+    function mirror(){
+        $path = arg('path') ?: '';
+        $data = @file_get_contents(DI_DATA_PATH.'cache/'.sha1($path)) ?: '';
+        $h = '<!DOCTYPE html><html><body>';
+        $h .= '<form action="/" method="post" target="tmp">';
+        $h .= '<input id="path" name="setmirror/'.$path.'" type="hidden"><br>';
+        $h .= '<input id="on-writing-path" value="'.$path.'"><br>';
+        $h .= '<textarea name="data">'.$data.'</textarea><br>';
+        $h .= '<input type="submit">';
+        $h .= '</form>';
+        $h .= '<iframe name="tmp" style="display:none;"></iframe>';
+        $h .= '<script>
+            document.getElementById("on-writing-path").onkeyup = function(){
+                document.getElementById("path").name = "setmirror/" + this.value;
+                console.log(document.getElementById("path").name);
+            };
+        </script>';
+        $h .= '</body></html>';
+        echo $h;
     }
     
     

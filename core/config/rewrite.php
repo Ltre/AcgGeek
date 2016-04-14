@@ -8,7 +8,7 @@ class DIRouteRewrite {
      *      DIRoute::rewrite() @ __route.php
      */
     static $rulesMap = array(
-        'mirror' => 'main/mirror',
+        'mirror' => 'cms/mirror',
         //由于DIUrlShell::regexpshell()的配置，将所有非空URI定向到cms/get，因此，以下配置无效
         /* '://acggeek.dev' => 'main/start',
         '://test.www.acggeek.com' => 'main/start',
