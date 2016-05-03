@@ -24,7 +24,10 @@ class CmsDo extends DIDo {
         } elseif (preg_match('/^list\/?$/i', DI_REGEXP_SHELL)) {
             echo @file_get_contents(DI_DATA_PATH.'cache/'.sha1('list'));
         } else {
-            echo @file_get_contents(DI_DATA_PATH.'cache/'.sha1(DI_REGEXP_SHELL));
+            $cont = @file_get_contents(DI_DATA_PATH.'cache/'.sha1(DI_REGEXP_SHELL));
+            $arr = json_decode($cont, 1);
+            unset($arr['mirror'], $arr['list'], $arr['listview']);
+            echo json_encode($arr);
         }
     }
     
