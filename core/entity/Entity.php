@@ -63,3 +63,21 @@ class Mixed extends Model {
     }
     
 }
+
+
+/*
+CREATE TABLE `v_mixed` (
+  `mid` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL COMMENT '代号,用于标识配置项',
+  `content` longtext NOT NULL COMMENT '配置值(多个值存储时需序列化)',
+  `note` varchar(64) DEFAULT NULL COMMENT '注释',
+  `create_ip` varchar(15) DEFAULT NULL,
+  `create_time` int(11) DEFAULT NULL,
+  `update_ip` varchar(15) DEFAULT NULL,
+  `update_time` int(11) DEFAULT NULL,
+  `create_user` bigint(20) DEFAULT NULL COMMENT '创建人的user_id',
+  `update_user` bigint(20) DEFAULT NULL COMMENT '修改人的user_id',
+  `valid` tinyint(4) DEFAULT '1' COMMENT '是否有效',
+  PRIMARY KEY (`mid`)
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+ */
