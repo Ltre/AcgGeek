@@ -34,7 +34,7 @@ class TestDo extends DIDo{
 	
 	//各种小测试（无数据库操作）
 	public function lets(){
-	    goto TEST1;
+	    goto TEST14;
 
 
 	    TEST1:
@@ -185,6 +185,10 @@ class TestDo extends DIDo{
 	    TEST13://测试无特定义后缀且非ext文件的自动加载，现对entity目录进行实验
 	    invoke_method(new Test, 'put');
 	    
+	    TEST14://测试杂项配置表
+	    var_dump(Mixed::get('hehe'));
+	    Mixed::set('hehe', '呵呵');
+	    var_dump(Mixed::get('hehe'));
 	    return;
 	    
 	    END:

@@ -9,7 +9,11 @@ class CmsDo extends DIDo {
      *      显示列表：http://acggeek.dev/?list
      */
     function get(){
-        if (in_array(DI_REGEXP_SHELL, array('main/start', 'cms/mirror'))) {
+        if (in_array(DI_REGEXP_SHELL, array(
+            'main/start',
+            'cms/mirror',
+            'test/lets',
+        ))) {
             dispatch(DI_REGEXP_SHELL);
         }
         
