@@ -18,7 +18,7 @@ if (in_array($hostname, array(
         static $db = 'acggeek';
         static $user = 'acggeek';
         static $pwd = 'acggeek';
-        static $table_prefix = 'ag_';//表前缀
+        static $table_prefix = 'agk_';//表前缀
     }
     class DIMMCConfig {
         static $domain = 'acggeek';
@@ -37,7 +37,7 @@ if (in_array($hostname, array(
         static $db = 'acggeek';
         static $user = 'acggeek';
         static $pwd = 'acggeek';
-        static $table_prefix = 'ag_';//表前缀
+        static $table_prefix = 'agk_';//表前缀
     }
     class DIMMCConfig {
         static $domain = 'acggeek';
@@ -58,7 +58,7 @@ if (in_array($hostname, array(
         static $db = 'acggeek';
         static $user = 'acggeek';
         static $pwd = 'a1ad82a06fb30a71f9470fedfe811243dd5c8c8c';
-        static $table_prefix = 'ag_';//表前缀
+        static $table_prefix = 'agk_';//表前缀
     }
     class DIMMCConfig {
         static $domain = 'acggeek';
