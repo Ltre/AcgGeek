@@ -65,7 +65,8 @@ class Mixed extends DIEntity {
 
 
 /*
-CREATE TABLE `agk_mixed` (
+DROP TABLE IF EXISTS `agk_mixed`;
+CREATE TABLE IF NOT EXISTS `agk_mixed` (
   `mid` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL COMMENT '代号,用于标识配置项',
   `content` longtext NOT NULL COMMENT '配置值(多个值存储时需序列化)',
@@ -78,5 +79,5 @@ CREATE TABLE `agk_mixed` (
   `update_user` bigint(20) NOT NULL COMMENT '修改人的user_id',
   `valid` tinyint(4) NOT NULL DEFAULT '1' COMMENT '是否有效',
   PRIMARY KEY (`mid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
  */
