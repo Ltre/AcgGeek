@@ -28,10 +28,16 @@ class DIUrlShell {
      * 注：该特性支持CMS系统的自由路由设计，不必再将URL拘泥于DO或LET
      */
     static function regexpshell(){
-        return array(
-            //'/diyroute(\/[^\/]+)*$/i' => 'diyroute',//禁用示例
-            '/([^\/]+\/?)+$/i' => 'cms/get',
+        $map = array(
+            '/diyroute(\/[^\/]+)*$/i' => 'diyroute',//示例
         );
+        switch (AG_CONST_REWRITE_MODE) {//详见const.php
+        	case 'cms'://处于动态重写模式
+        	    return array('/([^\/]+\/?)+$/i' => 'cms/get',);
+        	case 'normal'://处于普通重写模式
+        	default:
+        	    return $map;
+        }
     }
     
     /**

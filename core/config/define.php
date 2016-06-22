@@ -10,12 +10,14 @@ switch ($hostname) {
     case 'localhost':
     case 'acggeek.dev':
     case 'acggeek.webdev.duowan.com':
+    case 'cms.acggeek.dev':
         {
             define('DI_ROUTE_REWRITE', true);
             break;
         }
     case 'acggeek.com':
     case 'www.acggeek.com':
+    case 'cms.acggeek.com':
         {
             define('DI_DEBUG_MODE', false);
             define('DI_IO_RWFUNC_ENABLE', true);

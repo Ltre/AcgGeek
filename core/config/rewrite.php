@@ -8,18 +8,6 @@ class DIRouteRewrite {
      *      DIRoute::rewrite() @ __route.php
      */
     static $rulesMap = array(
-        'mirror' => 'cms/mirror',
-        //由于DIUrlShell::regexpshell()的配置，将所有非空URI定向到cms/get，因此，以下配置无效
-        /* '://acggeek.dev' => 'main/start',
-        '://test.www.acggeek.com' => 'main/start',
-        '://www.acggeek.com' => 'main/start',
-        '://acggeek.com' => 'main/start',
-        '://acggeek.webdev.duowan.com' => 'main/start',
-        
-        '<D>' => '<D>/start',
-        '<D>/<F>' => '<D>/<F>',
-        '<D>-<F>' => '<D>/<F>',
-        '<A>.<B>' => '<A>.<B>', */
     );
     
     /**
@@ -36,4 +24,26 @@ class DIRouteRewrite {
         'robots.txt' => true,
     );
     
+}
+
+//重写模式选择，详见const.php
+switch (AG_CONST_REWRITE_MODE) {
+	case 'normal':
+	    DIRouteRewrite::$rulesMap = array(
+            '://acggeek.dev' => 'main/start',
+            '://www.acggeek.com' => 'main/start',
+            '://acggeek.com' => 'main/start',
+            '://acggeek.webdev.duowan.com' => 'main/start',
+            
+            '<D>' => '<D>/start',
+            '<D>/<F>' => '<D>/<F>',
+            '<D>-<F>' => '<D>/<F>',
+            '<A>.<B>' => '<A>.<B>', 
+	    );
+	    break;
+	case 'cms':
+	    DIRouteRewrite::$rulesMap = array(
+            'mirror' => 'cms/mirror',
+	    );
+	    break;
 }

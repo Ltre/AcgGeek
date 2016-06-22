@@ -1,12 +1,21 @@
 <?php
+/**
+ * CMS动态重写支持
+ */
 class CmsDo extends DIDo {
+    
+    protected function _init(){
+        if ('cms' != AG_CONST_REWRITE_MODE) {
+            die('Error: not cms rewrite mode, can\'t request CmdDo!');
+        }
+    }
     
     /**
      * 入口指令：正则指令
-     *      设置指定URL内容的接口：http://acggeek.dev/?setmirror/{自定义路径}&data={自定义内容}
-     *      删除指定URL内容的接口：http://acggeek.dev/?delmirror/{自定义路径}
-     *      访问指定URL的内容：http://acggeek.dev/?{自定义路径}
-     *      显示列表：http://acggeek.dev/?list
+     *      设置指定URL内容的接口：http://cms.acggeek.dev/?setmirror/{自定义路径}&data={自定义内容}
+     *      删除指定URL内容的接口：http://cms.acggeek.dev/?delmirror/{自定义路径}
+     *      访问指定URL的内容：http://cms.acggeek.dev/?{自定义路径}
+     *      显示列表：http://cms.acggeek.dev/?list
      */
     function get(){
         if (in_array(DI_REGEXP_SHELL, array(
