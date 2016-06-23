@@ -9,7 +9,7 @@ class WxDo extends DIDo {
         $timestamp = arg('timestamp');
         $nonce = arg('nonce');
         $echoStr = arg('echostr');
-        if($this->checkSignature()){
+        if($this->checkSignature($signature, $timestamp, $nonce)){
             echo $echoStr;
             exit;
         }
