@@ -17,22 +17,22 @@ class WxDo extends DIDo {
     
     
     function setAppSecret($secret){
-        file_put_contents(DI_DATA_PATH.'wechat.appsecret', $secret);
+        file_put_contents(DI_DATA_PATH.'cache/wechat.appsecret', $secret);
     }
     
     
     function setToken($token){
-        file_put_contents(DI_DATA_PATH.'wechat.token', $token);
+        file_put_contents(DI_DATA_PATH.'cache/wechat.token', $token);
     }
     
     
     private function _getAppSecret(){
-        return @file_get_contents(DI_DATA_PATH.'wechat.appsecret') ?: '';
+        return @file_get_contents(DI_DATA_PATH.'cache/wechat.appsecret') ?: '';
     }
     
     
     private function _getToken(){
-        return @file_get_contents(DI_DATA_PATH.'wechat.token') ?: '';
+        return @file_get_contents(DI_DATA_PATH.'cache/wechat.token') ?: '';
     }
     
     
