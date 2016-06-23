@@ -52,7 +52,7 @@ if (in_array($hostname, array(
     'www.acggeek.com',
     'test.www.acggeek.com',
     'cms.acggeek.com',
-    'wx.accggeek.com',
+    'wx.acggeek.com',
 ))) {
     
     class DIDBConfig {
