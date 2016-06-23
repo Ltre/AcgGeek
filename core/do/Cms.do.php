@@ -1,6 +1,7 @@
 <?php
 /**
  * CMS动态重写支持
+ * 用于cms.acggeek.com
  */
 class CmsDo extends DIDo {
     
