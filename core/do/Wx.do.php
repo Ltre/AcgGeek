@@ -16,6 +16,11 @@ class WxDo extends DIDo {
     }
     
     
+    function setAppId($appId){
+        file_put_contents(DI_CACHE_PATH.'wechat.appid', $appId);
+    }
+    
+    
     function setAppSecret($secret){
         file_put_contents(DI_CACHE_PATH.'wechat.appsecret', $secret);
     }
