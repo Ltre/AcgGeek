@@ -28,7 +28,7 @@ Nginx Linode Tokyo:
 
 server {
 listen 80;
-server_name www.acggeek.com acggeek.com test.www.acggeek.com cms.acggeek.com;
+server_name www.acggeek.com acggeek.com test.www.acggeek.com cms.acggeek.com wx.acggeek.com;
 access_log /home/wwwlogs/www.acggeek.com_nginx.log combined;
 index index.html index.htm index.jsp index.php;
 include other.conf;

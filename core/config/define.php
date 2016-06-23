@@ -11,6 +11,7 @@ switch ($hostname) {
     case 'acggeek.dev':
     case 'acggeek.webdev.duowan.com':
     case 'cms.acggeek.dev':
+    case 'wx.acggeek.dev':
         {
             define('DI_ROUTE_REWRITE', true);
             break;
@@ -18,6 +19,7 @@ switch ($hostname) {
     case 'acggeek.com':
     case 'www.acggeek.com':
     case 'cms.acggeek.com':
+    case 'wx.acggeek.com':
         {
             define('DI_DEBUG_MODE', false);
             define('DI_IO_RWFUNC_ENABLE', true);

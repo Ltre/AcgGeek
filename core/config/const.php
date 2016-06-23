@@ -7,8 +7,10 @@ $hostname = substr( ($h = $_SERVER['HTTP_HOST']), 0, (false !== ($pos = strpos($
 switch ($hostname) {
 	case 'acggeek.com': //正常重写模式
 	case 'www.acggeek.com':
+	case 'wx.acggeek.com':
 	case 'acggeek.dev':
 	case 'www.acggeek.dev':
+	case 'wx.acggeek.dev':
 	case 'acggeek.webdev.duowan.com':
 	    define('AG_CONST_REWRITE_MODE', 'normal');
 	    break;

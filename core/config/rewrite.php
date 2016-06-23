@@ -34,6 +34,8 @@ switch (AG_CONST_REWRITE_MODE) {
             '://www.acggeek.com' => 'main/start',
             '://acggeek.com' => 'main/start',
             '://acggeek.webdev.duowan.com' => 'main/start',
+            '://wx.acggeek.dev' => 'wx/start',
+            '://wx.acggeek.com' => 'wx/start',
             
             '<D>' => '<D>/start',
             '<D>/<F>' => '<D>/<F>',

@@ -10,6 +10,7 @@ if (in_array($hostname, array(
     'localhost',
     'acggeek.dev',//绑定本地HOSTS
     'cms.acggeek.dev',
+    'wx.acggeek.dev',
 ))){
 	
     class DIDBConfig {
@@ -51,6 +52,7 @@ if (in_array($hostname, array(
     'www.acggeek.com',
     'test.www.acggeek.com',
     'cms.acggeek.com',
+    'wx.accggeek.com',
 ))) {
     
     class DIDBConfig {
