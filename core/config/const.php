@@ -1,6 +1,6 @@
 <?php
 /**
- * 重写模式识别
+ * 常量：重写模式识别常量
  * 调用点：urlshell.php, rewrite.php
  */
 $hostname = substr( ($h = $_SERVER['HTTP_HOST']), 0, (false !== ($pos = strpos($h, ':')) ? $pos : strlen($h)) );
@@ -21,3 +21,11 @@ switch ($hostname) {
 	default:
 	    die('Invalid hostname for setup rewrite rules!');
 }
+
+/**
+ * wechat常量配置(文件部分)
+ */
+define('WX_CONF_FILE_APPID', DI_DATA_PATH.'cache/wechat.appid');
+define('WX_CONF_FILE_APPSECRET', DI_DATA_PATH.'cache/wechat.appsecret');
+define('WX_CONF_FILE_TOKEN', DI_DATA_PATH.'cache/wechat.token');
+define('WX_CONF_FILE_ACCESSTOKEN', DI_DATA_PATH.'cache/wechat.accesstoken');
