@@ -7,6 +7,7 @@ import('net/dwHttp');
 class WxDo extends DIDo {
     
     function start(){
+        dump($_REQUEST);die;
         $signature = arg('signature');
         $timestamp = arg('timestamp');
         $nonce = arg('nonce');
