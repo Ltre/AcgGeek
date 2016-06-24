@@ -10,10 +10,10 @@ class WxValidate extends DIEntity {
     static function checkBind($signature, $timestamp, $nonce){
         $token = WxConf::getToken();
         if (empty($token)) {
-            throw new Exception('TOKEN is not defined!');
+            throw new DIException('TOKEN is not defined!');
         }
         if (empty($timestamp) || abs(time()-$timestamp) > 60) {
-            throw new Exception('time expired');
+            throw new DIException('time expired');
         }
         $tmpArr = array($token, $timestamp, $nonce);
         sort($tmpArr, SORT_STRING);
