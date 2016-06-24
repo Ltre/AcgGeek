@@ -28,14 +28,14 @@ class WxMsg extends DIEntity {
 				<Content><![CDATA[%s]]></Content>
 				<FuncFlag>0</FuncFlag>
 				</xml>";
-            if (empty($keyword)) {
+//             if (empty($keyword)) {
                 $msgType = "text";
                 $contentStr = "Welcome to wechat world!";
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 return $resultStr;
-            } else {
-                return 'Input something...';
-            }
+//             } else {
+//                 return 'Input something...';
+//             }
         }
     }
     
