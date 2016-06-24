@@ -30,7 +30,7 @@ class WxMsg extends DIEntity {
 				</xml>";
 //             if (empty($keyword)) {
                 $msgType = "text";
-                $contentStr = self::_sample();
+                $contentStr = self::_sample($keyword);
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 return $resultStr;
 //             } else {
@@ -41,18 +41,17 @@ class WxMsg extends DIEntity {
     
     
     
-    private static function _sample(){
+    private static function _sample($msg){
         $msgList = self::_sampleStore('msgList') ?: array();
         $answers = self::_sampleStore('answers') ?: array();
         $mode = self::_sampleStore('mode') ?: 'wait';//默认为等待话题模式
-        $msg = arg('msg');
         if ($msg !== NULL) {
             $msgList[] = $msg;
             self::_sampleStore('msgList', $msgList);
         }
         if ($mode === 'wait') {
-            return "I'm a bot!";
             self::_sampleStore('mode', 'chat');
+            return "I'm a bot!";
         } elseif ($mode === 'learn') {
             $lastMsg = @$msgList[count($msgList) - 2];
             if ($lastMsg != '') {
@@ -73,8 +72,9 @@ class WxMsg extends DIEntity {
     
     
     private static function _sampleStore($key, $content = null){
+        var_dump(func_get_args());echo'<br>';
         $file = DI_CACHE_PATH."wechat.samplemsg.{$key}";
-        if (null === $file) return unserialize(file_get_contents($file));
+        if (null === $content) return @unserialize(file_get_contents($file)) ?: null;
         else file_put_contents($file, serialize($content));
     }
     
