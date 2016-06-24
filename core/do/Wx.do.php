@@ -17,7 +17,7 @@ class WxDo extends DIDo {
                 exit;
             }
         } else { //其它类型请求
-            $postStr = file_get_contents("php://input");
+            $postStr = $GLOBALS["HTTP_RAW_POST_DATA"] ?: file_get_contents("php://input");
             echo WxMsg::response($postStr);
         }
     }
