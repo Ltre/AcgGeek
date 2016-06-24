@@ -30,7 +30,7 @@ class WxMsg extends DIEntity {
 				</xml>";
 //             if (empty($keyword)) {
                 $msgType = "text";
-                $contentStr = "Welcome to wechat world!";
+                $contentStr = self::_sample();
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 return $resultStr;
 //             } else {
@@ -38,5 +38,38 @@ class WxMsg extends DIEntity {
 //             }
         }
     }
+    
+    
+    
+    private static function _sample(){
+        $msgList = session('msgList') ?: array();
+        $answers = session('answers') ?: array();
+        $mode = session('mode') ?: 'wait';//默认为等待话题模式
+        $msg = arg('msg');
+        if ($msg !== NULL) {
+            $msgList[] = $msg;
+            session('msgList', $msgList);
+        }
+        if ($mode === 'wait') {
+            return "I'm a bot!";
+            session('mode', 'chat');
+        } elseif ($mode === 'learn') {
+            $lastMsg = @$msgList[count($msgList) - 2];
+            if ($lastMsg != '') {
+                $answers[$lastMsg] = $msg;//学习答案
+                session('answers', $answers);
+            }
+            session('mode', 'chat');
+            return "已学习！";
+        } elseif ($mode === 'chat') {
+            if (isset($answers[$msg])) {
+                return $answers[$msg];
+            } else {
+                session('mode', 'learn');//遇到不懂的，改为学习模式
+                return "纳尼索类意米挖干奶（快教我咋回答）";
+            }
+        }
+    }
+    
     
 }
