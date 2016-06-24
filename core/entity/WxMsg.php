@@ -42,33 +42,40 @@ class WxMsg extends DIEntity {
     
     
     private static function _sample(){
-        $msgList = session('msgList') ?: array();
-        $answers = session('answers') ?: array();
-        $mode = session('mode') ?: 'wait';//默认为等待话题模式
+        $msgList = self::_sample('msgList') ?: array();
+        $answers = self::_sample('answers') ?: array();
+        $mode = self::_sample('mode') ?: 'wait';//默认为等待话题模式
         $msg = arg('msg');
         if ($msg !== NULL) {
             $msgList[] = $msg;
-            session('msgList', $msgList);
+            self::_sample('msgList', $msgList);
         }
         if ($mode === 'wait') {
             return "I'm a bot!";
-            session('mode', 'chat');
+            self::_sample('mode', 'chat');
         } elseif ($mode === 'learn') {
             $lastMsg = @$msgList[count($msgList) - 2];
             if ($lastMsg != '') {
                 $answers[$lastMsg] = $msg;//学习答案
-                session('answers', $answers);
+                self::_sample('answers', $answers);
             }
-            session('mode', 'chat');
+            self::_sample('mode', 'chat');
             return "已学习！";
         } elseif ($mode === 'chat') {
             if (isset($answers[$msg])) {
                 return $answers[$msg];
             } else {
-                session('mode', 'learn');//遇到不懂的，改为学习模式
+                self::_sample('mode', 'learn');//遇到不懂的，改为学习模式
                 return "纳尼索类意米挖干奶（快教我咋回答）";
             }
         }
+    }
+    
+    
+    private static function _sampleStore($key, $content = null){
+        $file = DI_CACHE_PATH."wechat.samplemsg.{$key}";
+        if (null === $file) return unserialize(file_get_contents($file));
+        else file_put_contents($file, serialize($content));
     }
     
     
