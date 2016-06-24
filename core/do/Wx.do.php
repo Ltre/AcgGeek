@@ -11,14 +11,13 @@ class WxDo extends DIDo {
         $timestamp = arg('timestamp');
         $nonce = arg('nonce');
         $echoStr = arg('echostr');
-        if (isset($_GET['echostr'])) { //验证公众号绑定
-            if (WxValidate::checkBind($signature, $timestamp, $nonce)) {
+        if (WxValidate::checkBind($signature, $timestamp, $nonce)) {
+            if (isset($_GET['echostr'])) {//仅验证公众号绑定
                 echo $echoStr;
-                exit;
+            } else {//其它类型请求
+                $postStr = @$GLOBALS["HTTP_RAW_POST_DATA"] ?: file_get_contents("php://input");
+                echo WxMsg::getResponse($postStr);
             }
-        } else { //其它类型请求
-            $postStr = @$GLOBALS["HTTP_RAW_POST_DATA"] ?: file_get_contents("php://input");
-            echo WxMsg::getResponse($postStr);
         }
     }
 
