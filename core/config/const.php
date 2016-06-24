@@ -29,3 +29,8 @@ define('WX_CONF_FILE_APPID', DI_DATA_PATH.'cache/wechat.appid');
 define('WX_CONF_FILE_APPSECRET', DI_DATA_PATH.'cache/wechat.appsecret');
 define('WX_CONF_FILE_TOKEN', DI_DATA_PATH.'cache/wechat.token');
 define('WX_CONF_FILE_ACCESSTOKEN', DI_DATA_PATH.'cache/wechat.accesstoken');
+
+/**
+ * wechat API配置
+ */
+define('WX_API_GET_ACCESSTOKEN', 'https://api.weixin.qq.com/cgi-bin/token');

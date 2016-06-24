@@ -20,17 +20,17 @@ class WxConf extends DIEntity {
     
     
     static function getAppId(){
-        return @file_get_contents(DI_CACHE_PATH.'wechat.appid') ?: '';
+        return @file_get_contents(WX_CONF_FILE_APPID) ?: '';
     }
     
     
     static function getAppSecret(){
-        return @file_get_contents(DI_CACHE_PATH.'wechat.appsecret') ?: '';
+        return @file_get_contents(WX_CONF_FILE_APPSECRET) ?: '';
     }
     
     
     static function getToken(){
-        return @file_get_contents(DI_CACHE_PATH.'wechat.token') ?: '';
+        return @file_get_contents(WX_CONF_FILE_TOKEN) ?: '';
     }
     
     
@@ -43,7 +43,7 @@ class WxConf extends DIEntity {
                 return $data['access_token'];
             }
         }
-        $url = "https://api.weixin.qq.com/cgi-bin/token";
+        $url = WX_API_GET_ACCESSTOKEN;
         $url .= '?'.http_build_query(array(
             'grant_type' => 'client_credential',
             'appid' => self::getAppId(),
@@ -54,7 +54,7 @@ class WxConf extends DIEntity {
         $data = json_decode($ret, 1);
         if (isset($data['access_token'], $data['expires_in'])) {
             $data['start_time'] = time();
-            file_put_contents(DI_CACHE_PATH.'wechat.accesstoken', json_encode($data));
+            file_put_contents(WX_CONF_FILE_ACCESSTOKEN, json_encode($data));
             return $data['access_token'];
         } else {
             throw new DIException('can not gen access_token!');
