@@ -31,12 +31,14 @@ switch (AG_CONST_REWRITE_MODE) {
 	case 'normal':
 	    DIRouteRewrite::$rulesMap = array(
             '://www.acggeek.com' => 'main/start',
-            '://wx.acggeek.com/<F>' => 'wx/<F>',
             '://wx.acggeek.com' => 'wx/start',
+            '://wx.acggeek.com/wx' => 'wx/start',
+            '://wx.acggeek.com/<F>' => 'wx/<F>',
             '://acggeek.com' => 'main/start',
             
             '://www.acggeek.dev' => 'main/start',
             '://wx.acggeek.dev' => 'wx/start',
+            '://wx.acggeek.dev/wx' => 'wx/start',
             '://wx.acggeek.dev/<F>' => 'wx/<F>',
             '://acggeek.dev' => 'main/start',
             
