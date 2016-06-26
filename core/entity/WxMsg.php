@@ -41,16 +41,16 @@ class WxMsg extends DIEntity {
     
     
     
-    private static function _sample($msg){
+    private static function _sample($fromUsername, $msg){
         $msgList = self::_sampleStore('msgList') ?: array();
         $answers = self::_sampleStore('answers') ?: array();
-        $mode = self::_sampleStore('mode') ?: 'wait';//默认为等待话题模式
+        $mode = self::_sampleStore('mode'.$fromUsername) ?: 'wait';//默认为等待话题模式
         if ($msg !== NULL) {
             $msgList[] = $msg;
             self::_sampleStore('msgList', $msgList);
         }
         if ($mode === 'wait') {
-            self::_sampleStore('mode', 'chat');
+            self::_sampleStore('mode'.$fromUsername, 'chat');
             return "I'm a bot!";
         } elseif ($mode === 'learn') {
             $lastMsg = @$msgList[count($msgList) - 2];
@@ -58,13 +58,13 @@ class WxMsg extends DIEntity {
                 $answers[$lastMsg] = $msg;//学习答案
                 self::_sampleStore('answers', $answers);
             }
-            self::_sampleStore('mode', 'chat');
+            self::_sampleStore('mode'.$fromUsername, 'chat');
             return "已学习！";
         } elseif ($mode === 'chat') {
             if (isset($answers[$msg])) {
                 return $answers[$msg];
             } else {
-                self::_sampleStore('mode', 'learn');//遇到不懂的，改为学习模式
+                self::_sampleStore('mode'.$fromUsername, 'learn');//遇到不懂的，改为学习模式
                 return "纳尼索类意米挖干奶（快教我咋回答）";
             }
         }
