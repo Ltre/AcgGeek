@@ -72,7 +72,6 @@ class WxMsg extends DIEntity {
     
     
     private static function _sampleStore($key, $content = null){
-        var_dump(func_get_args());echo'<br>';
         $file = DI_CACHE_PATH."wechat.samplemsg.{$key}";
         if (null === $content) return @unserialize(file_get_contents($file)) ?: null;
         else file_put_contents($file, serialize($content));
