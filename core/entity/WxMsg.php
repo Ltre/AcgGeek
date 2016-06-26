@@ -30,7 +30,7 @@ class WxMsg extends DIEntity {
 				</xml>";
 //             if (empty($keyword)) {
                 $msgType = "text";
-                $contentStr = self::_sample($keyword);
+                $contentStr = self::_sample($fromUsername, $keyword);
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 return $resultStr;
 //             } else {
