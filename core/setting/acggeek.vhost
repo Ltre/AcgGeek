@@ -1,4 +1,19 @@
-Apache HP PC:
+Apache HP PC in wamp 3:
+
+<VirtualHost *:80>
+	ServerName acggeek.dev
+    ServerAlias *.acggeek.dev
+	DocumentRoot e:/installedapp/zend/apache2/htdocs/acggeek
+	<Directory  "e:/installedapp/zend/apache2/htdocs/acggeek/">
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride All
+		Require local
+	</Directory>
+</VirtualHost>
+
+--------------------------------------------------------------
+
+Apache HP PC in wamp2.2:
 
 NameVirtualHost acggeek.dev:80
 <VirtualHost *:80>
@@ -10,7 +25,7 @@ NameVirtualHost acggeek.dev:80
 
 --------------------------------------------------------------
 
-Apache Company PC:
+Apache Company PC in wamp2.2:
 
 NameVirtualHost acggeek.dev:80
 <VirtualHost acggeek.dev:80>
