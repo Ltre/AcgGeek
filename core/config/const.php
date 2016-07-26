@@ -5,7 +5,9 @@
  */
 $hostname = substr( ($h = $_SERVER['HTTP_HOST']), 0, (false !== ($pos = strpos($h, ':')) ? $pos : strlen($h)) );
 switch ($hostname) {
-	case 'acggeek.com': //正常重写模式
+    case 'localhost': //正常重写模式
+    case '127.0.0.1':
+	case 'acggeek.com':
 	case 'www.acggeek.com':
 	case 'wx.acggeek.com':
 	case 'acggeek.dev':
