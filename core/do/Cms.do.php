@@ -58,8 +58,9 @@ class CmsDo extends DIDo {
         $h = '<!DOCTYPE html><html><body>';
         $h .= '<form action="/" method="post" target="tmp">';
         $h .= '<input id="path" name="setmirror/'.$path.'" type="hidden"><br>';
-        $h .= '<input id="on-writing-path" value="'.$path.'"><br>';
-        $h .= '<textarea name="data">'.$data.'</textarea><br>';
+        $h .= '<input id="on-writing-path" value="'.$path.'">';
+        $h .= '<input id="preview" type="button" value="预览"><br>';
+        $h .= '<textarea name="data" style="width: 640px; height: 480px;">'.$data.'</textarea><br>';
         $h .= '<input type="submit">';
         $h .= '</form>';
         $h .= '<iframe name="tmp" style="display:none;"></iframe>';
@@ -67,6 +68,10 @@ class CmsDo extends DIDo {
             document.getElementById("on-writing-path").onkeyup = function(){
                 document.getElementById("path").name = "setmirror/" + this.value;
                 console.log(document.getElementById("path").name);
+            };
+            document.getElementById("preview").onclick = function(){
+                var u = "/" + encodeURI(document.getElementById("on-writing-path").value);
+                u != "/" && window.open(u, "_blank");
             };
         </script>';
         $h .= '</body></html>';
