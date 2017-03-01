@@ -40,8 +40,8 @@ CREATE TABLE IF NOT EXISTS `agk_mixed` (
   `create_time` int(11) NOT NULL,
   `update_ip` varchar(15) NOT NULL DEFAULT '',
   `update_time` int(11) NOT NULL,
-  `create_user` bigint(20) NOT NULL COMMENT '创建人的user_id',
-  `update_user` bigint(20) NOT NULL COMMENT '修改人的user_id',
+  `create_user` varchar(32) NOT NULL DEFAULT '' COMMENT '创建人',
+  `update_user` varchar(32) NOT NULL DEFAULT '' COMMENT '修改人',
   `valid` tinyint(4) NOT NULL DEFAULT '1' COMMENT '是否有效',
   PRIMARY KEY (`mid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
