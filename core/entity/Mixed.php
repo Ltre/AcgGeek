@@ -7,7 +7,6 @@ import('store/dwCache');
 class Mixed extends DIEntity {
     
     static function set($name, $content, $note = '', $valid = 1){
-        $name = sha1($name);
         $item = supertable('Mixed')->find(array('name' => $name));
         $data = array(
             'name' => $name,
@@ -17,8 +16,8 @@ class Mixed extends DIEntity {
             'create_time' => time(),
             'update_ip' => getip(),
             'update_time' => time(),
-            'create_user' => 0,
-            'update_user' => 0,
+            'create_user' => '',
+            'update_user' => '',
             'valid' => $valid,
         );
         if (empty($item)) {
@@ -26,17 +25,16 @@ class Mixed extends DIEntity {
         } else {
             unset($data['create_ip'], $data['create_time'], $data['create_user']);
             $success = false !== supertable('Mixed')->update(compact('name'), $data);
-            $success AND dw_cache()->delete(__CLASS__.$name);
+            $success AND dw_cache()->delete(__CLASS__.sha1($name));
             return $success;
         }
     }
 
     
     static function setValid($name, $valid){
-        $name = sha1($name);
         $valid = (int) $valid;
         $success = false !== supertable('Mixed')->update(compact('name'), compact('valid'));
-        $success AND dw_cache()->delete(__CLASS__.$name);
+        $success AND dw_cache()->delete(__CLASS__.sha1($name));
         return $success;
     }
     
@@ -49,15 +47,14 @@ class Mixed extends DIEntity {
     
     
     static function getData($name){
-        $name = sha1($name);
-        $cache = dw_cache()->get(__CLASS__.$name);
+        $cache = dw_cache()->get(__CLASS__.sha1($name));
         if ($cache) return $cache;
         
         $item = supertable('Mixed')->find(array('name' => $name, 'valid' => 1));
         if (empty($item)) return null;
         $item = (array) $item;
         
-        dw_cache()->set(__CLASS__.$name, $item);
+        dw_cache()->set(__CLASS__.sha1($name), $item);
         return $item;
     }
     
