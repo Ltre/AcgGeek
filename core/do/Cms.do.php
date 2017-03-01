@@ -29,20 +29,19 @@ class CmsDo extends DIDo {
         
         if (preg_match('/^setmirror\/(.*)$/', DI_REGEXP_SHELL, $matches)) {
             $setpath = $matches[1];
-            file_put_contents(DI_DATA_PATH.'cache/'.sha1($setpath), arg('data'));
+            $this->_setContent($setpath, arg('data'));
             $this->_updateList($setpath, 'set');
         } elseif (preg_match('/^delmirror\/(.*)$/', DI_REGEXP_SHELL, $matches)) {
             $delpath = $matches[1];
-            @unlink(DI_DATA_PATH.'cache/'.sha1($delpath));
+            $this->_delContent($delpath);
             $this->_updateList($delpath, 'del');
         } elseif (preg_match('/^list\/?$/i', DI_REGEXP_SHELL)) {
-            $cont = @file_get_contents(DI_DATA_PATH.'cache/'.sha1('list')) ?: '{}';
-            $arr = json_decode($cont, 1);
-            $arr = array_reverse($arr, true);//按清单文件添加顺序的倒序排列，如遇数字键，则JS不能针对这些键倒序排列
-            unset($arr['mirror'], $arr['list']);
-            echo json_encode($arr);
+            $list = $this->_getList();
+            echo json_encode($list, JSON_FORCE_OBJECT);
+        } elseif (preg_match('/^listview\/?$/i', DI_REGEXP_SHELL)) {
+            echo $this->_getListviewHTML();
         } else {
-            echo @file_get_contents(DI_DATA_PATH.'cache/'.sha1(DI_REGEXP_SHELL));
+            echo $this->_getContent(DI_REGEXP_SHELL);
         }
     }
     
@@ -55,7 +54,7 @@ class CmsDo extends DIDo {
      */
     function mirror(){
         $path = arg('path') ?: '';
-        $data = @file_get_contents(DI_DATA_PATH.'cache/'.sha1($path)) ?: '';
+        $data = $this->_getFileContent($path);
         $h = '<!DOCTYPE html><html><body>';
         $h .= '<form action="/" method="post" target="tmp">';
         $h .= '<input id="path" name="setmirror/'.$path.'" type="hidden"><br>';
@@ -78,11 +77,44 @@ class CmsDo extends DIDo {
         $h .= '</body></html>';
         echo $h;
     }
+
+
+    //定制的可操作列表视图页
+    function _getListviewHTML(){
+        $html = '<!DOCTYPE html>
+            <html>
+            <head>
+            <script src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+            </head>
+            <body>
+            <script>
+            $.get(\'/list\', function(j){
+            $.each(j, function(i, e){
+            document.write(\'<a href="/\'+i+\'">\'+i+\'</a><br>\');
+            });
+            }, \'json\');
+            </script>
+            </body>
+            </html>';
+        return $html;
+    }
     
+
+    protected function _getList(){
+        $cont = $this->_getContent('list') ?: '[]';
+        $arr = json_decode($cont, 1);
+        $arr = array_reverse($arr, true);//按清单文件添加顺序的倒序排列，如遇数字键，则JS不能针对这些键倒序排列
+        //unset($arr['mirror'], $arr['list']); 
+        foreach ($this->_getItemNamesNoWrite() as $v) {
+            unset($arr[$v]);//屏蔽特殊的项
+        }
+        return $arr;
+    }
+
     
+    //在列表设置、更改某一项
     protected function _updateList($path, $method='set'){
-        $listFile = DI_DATA_PATH.'cache/'.sha1('list');
-        @$listJson = file_get_contents($listFile) ?: '[]';
+        @$listJson = $this->_getContent('list') ?: '[]';
         $list = json_decode($listJson, 1);
         
         switch (strtolower($method)) {
@@ -96,7 +128,57 @@ class CmsDo extends DIDo {
         	    break;
         }
         
-        file_put_contents($listFile, json_encode($list));
+        $this->_setContent('list', json_encode($list));
+    }
+
+
+    protected function _getContent($name){
+        $mixedName = $this->_getMixedDataName($name);
+        $content = Mixed::get($mixedName);
+        if (null !== $content) return $content;
+        $content = $this->_getFileContent($name);
+        Mixed::set($mixedName, $content);
+        return $content;
+    }
+
+    protected function _getFileContent($name){
+        if (empty($name) && ! is_numeric($name)) return '';
+        $file = $this->_getHashFile($name);
+        if (! file_exists($file)) return '';
+        $content = file_get_contents($file);
+        $content = $content === false ? '' : $content;
+        return $content;
+    }
+
+    protected function _setContent($name, $content){
+        if (in_array($name, $this->_getItemNamesNoWrite())) return;
+        $mixedName = $this->_getMixedDataName($name);
+        Mixed::set($mixedName, $content);
+        $file = $this->_getHashFile($name);
+        file_put_contents($file, $content);
+    }
+
+    protected function _delContent($name){
+        if (in_array($name, $this->_getItemNamesNoWrite())) return;
+        $mixedName = $this->_getMixedDataName($name);
+        Mixed::setValid($mixedName, 0);
+        $file = $this->_getHashFile($name);
+        @unlink($file);
+    }
+
+    protected function _getHashFile($name){
+        $file = DI_DATA_PATH.'cache/'.sha1($name);
+        return $file;
+    }
+
+    //获取mixed表数据用的带前缀name，避免存储污染
+    protected function _getMixedDataName($name){
+        return 'cms.acggeek: '.$name;
+    }
+
+    //不进行读写的项
+    protected function _getItemNamesNoWrite(){
+        return array('mirror', 'setmirror', 'delmirror', 'listview');
     }
     
 }
