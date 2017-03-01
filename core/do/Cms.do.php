@@ -36,8 +36,9 @@ class CmsDo extends DIDo {
             @unlink(DI_DATA_PATH.'cache/'.sha1($delpath));
             $this->_updateList($delpath, 'del');
         } elseif (preg_match('/^list\/?$/i', DI_REGEXP_SHELL)) {
-            $cont = @file_get_contents(DI_DATA_PATH.'cache/'.sha1('list'));
+            $cont = @file_get_contents(DI_DATA_PATH.'cache/'.sha1('list')) ?: '{}';
             $arr = json_decode($cont, 1);
+            $arr = array_reverse($arr, true);//按清单文件添加顺序的倒序排列，如遇数字键，则JS不能针对这些键倒序排列
             unset($arr['mirror'], $arr['list']);
             echo json_encode($arr);
         } else {
