@@ -1,7 +1,7 @@
 -- ----------------------------
 -- 5sing单曲库
 -- @since 2016-05-04
--- HP localhost 未同步
+-- HP localhost 已同步
 -- Office localhost 已同步
 -- CONOHA 已同步
 -- ----------------------------
