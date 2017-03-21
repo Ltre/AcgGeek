@@ -40,6 +40,8 @@ class CmsDo extends DIDo {
             echo json_encode($list, JSON_FORCE_OBJECT);
         } elseif (preg_match('/^listview\/?$/i', DI_REGEXP_SHELL)) {
             echo $this->_getListviewHTML();
+        } elseif (preg_match('/^cleartrash\/?$/i', DI_REGEXP_SHELL)) {
+            $this->_clearTrash();//一些恶意请求，会插入空串内容的记录，使用该命令可清空
         } else {
             echo $this->_getContent(DI_REGEXP_SHELL);
         }
@@ -171,6 +173,15 @@ class CmsDo extends DIDo {
         return $file;
     }
 
+    protected function _clearTrash(){
+        $driver = new SeniorModel;
+        $mixedName = $this->_getMixedDataName('');
+        $sql = "DELETE FROM agk_mixed WHERE `name` LIKE :name AND `content` = '' ";
+        $op = supermodel()->execute($sql, array('name' => $mixedName.'%'));
+        echo 'result is ' . ($op !== false ? 'success' : 'failure') . ',<br>';
+        echo 'clear ' . intval($op) . ' trash items.';
+    }
+    
     //获取mixed表数据用的带前缀name，避免存储污染
     protected function _getMixedDataName($name){
         return 'cms.acggeek: '.$name;
@@ -180,5 +191,5 @@ class CmsDo extends DIDo {
     protected function _getItemNamesNoWrite(){
         return array('mirror', 'setmirror', 'delmirror', 'listview');
     }
-    
+
 }
