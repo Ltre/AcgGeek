@@ -174,16 +174,12 @@ class CmsDo extends DIDo {
     }
 
     protected function _clearTrash(){
-        try {            
-            $driver = new SeniorModel;
-            $mixedName = $this->_getMixedDataName('');
-            $sql = "DELETE FROM agk_mixed WHERE `name` LIKE :name AND `content` = '' ";
-            $op = supermodel()->execute($sql, array('name' => $mixedName.'%'));
-            echo 'result is ' . ($op !== false ? 'success' : 'failure') . ',<br>';
-            echo 'clear ' . intval($op) . ' trash items.';
-        } catch (Exception $e) {
-            throw $e;
-        }
+        $driver = new SeniorModel;
+        $mixedName = $this->_getMixedDataName('');
+        $sql = "DELETE FROM agk_mixed WHERE `name` LIKE :name AND `content` = '' ";
+        $op = supermodel()->execute($sql, array('name' => $mixedName.'%'));
+        echo 'result is ' . ($op !== false ? 'success' : 'failure') . ',<br>';
+        echo 'clear ' . intval($op) . ' trash items.';
     }
     
     //获取mixed表数据用的带前缀name，避免存储污染
