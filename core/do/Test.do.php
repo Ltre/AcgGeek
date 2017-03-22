@@ -448,8 +448,6 @@ class TestDo extends DIDo{
 	
 	
 	function hehe(){
-        class_exists('shabisdddd');
-        die;
 	    dump(WxMsg::getResponse('<xml>
 				<ToUserName><![CDATA[%s]]></ToUserName>
 				<FromUserName><![CDATA[%s]]></FromUserName>

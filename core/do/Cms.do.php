@@ -18,7 +18,7 @@ class CmsDo extends DIDo {
      *      访问指定URL的内容：http://cms.acggeek.dev/?{自定义路径}
      *      显示列表：http://cms.acggeek.dev/?list
      */
-    function get(){
+    function start(){
         if (in_array(DI_REGEXP_SHELL, array(
             'main/start',
             'cms/mirror',
@@ -27,22 +27,22 @@ class CmsDo extends DIDo {
             dispatch(DI_REGEXP_SHELL);
         }
         
-        if (preg_match('/^setmirror\/(.*)$/', DI_REGEXP_SHELL, $matches)) {
+        if (preg_match('/^setmirror\/(.*)$/', DI_REGEXP_SHELL, $matches)) {//设置内容
             $setpath = $matches[1];
             $this->_setContent($setpath, arg('data'));
             $this->_updateList($setpath, 'set');
-        } elseif (preg_match('/^delmirror\/(.*)$/', DI_REGEXP_SHELL, $matches)) {
+        } elseif (preg_match('/^delmirror\/(.*)$/', DI_REGEXP_SHELL, $matches)) {//删除指定内容
             $delpath = $matches[1];
             $this->_delContent($delpath);
             $this->_updateList($delpath, 'del');
-        } elseif (preg_match('/^list\/?$/i', DI_REGEXP_SHELL)) {
+        } elseif (preg_match('/^list\/?$/i', DI_REGEXP_SHELL)) {//json列出内容列表
             $list = $this->_getList();
             echo json_encode($list, JSON_FORCE_OBJECT);
-        } elseif (preg_match('/^listview\/?$/i', DI_REGEXP_SHELL)) {
+        } elseif (preg_match('/^listview\/?$/i', DI_REGEXP_SHELL)) {//list的视图形式
             echo $this->_getListviewHTML();
         } elseif (preg_match('/^cleartrash\/?$/i', DI_REGEXP_SHELL)) {
             $this->_clearTrash();//一些恶意请求，会插入空串内容的记录，使用该命令可清空
-        } else {
+        } else {//获取内容
             echo $this->_getContent(DI_REGEXP_SHELL);
         }
     }

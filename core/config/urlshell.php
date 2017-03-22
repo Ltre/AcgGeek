@@ -33,7 +33,7 @@ class DIUrlShell {
         );
         switch (AG_CONST_REWRITE_MODE) {//详见const.php
         	case 'cms'://处于动态重写模式
-        	    return array('/([^\/]+\/?)+$/i' => 'cms/get',);
+        	    return array('/([^\/]+\/?)+$/i' => 'cms/start',);
         	case 'normal'://处于普通重写模式
         	default:
         	    return $map;
