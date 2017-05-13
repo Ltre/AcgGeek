@@ -19,3 +19,7 @@ CREATE TABLE `agk_mixed` (
   `valid` tinyint(4) NOT NULL DEFAULT '1' COMMENT '是否有效',
   PRIMARY KEY (`mid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `agk_mixed`
+MODIFY COLUMN `name`  varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '代号,用于标识配置项' AFTER `mid`;
+
