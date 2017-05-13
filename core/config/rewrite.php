@@ -34,12 +34,18 @@ switch (AG_CONST_REWRITE_MODE) {
             '://wx.acggeek.com' => 'wx/start',
             '://wx.acggeek.com/wx' => 'wx/start',
             '://wx.acggeek.com/<F>' => 'wx/<F>',
+            '://log.acggeek.com' => 'log/start',
+            '://log.acggeek.com/log' => 'log/start',
+            '://log.acggeek.com/<F>' => 'log/<F>',
             '://acggeek.com' => 'main/start',
             
             '://www.acggeek.dev' => 'main/start',
             '://wx.acggeek.dev' => 'wx/start',
             '://wx.acggeek.dev/wx' => 'wx/start',
             '://wx.acggeek.dev/<F>' => 'wx/<F>',
+            '://log.acggeek.dev' => 'log/start',
+            '://log.acggeek.dev/log' => 'log/start',
+            '://log.acggeek.dev/<F>' => 'log/<F>',
             '://acggeek.dev' => 'main/start',
             
             '://acggeek.webdev.duowan.com' => 'main/start',
