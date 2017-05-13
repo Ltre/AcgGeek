@@ -20,6 +20,7 @@ CREATE TABLE `agk_mixed` (
   PRIMARY KEY (`mid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- HP localhost 未同步
 ALTER TABLE `agk_mixed`
 MODIFY COLUMN `name`  varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '代号,用于标识配置项' AFTER `mid`;
 
