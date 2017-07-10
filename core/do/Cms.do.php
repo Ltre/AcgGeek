@@ -32,22 +32,28 @@ class CmsDo extends DIDo {
             $this->_setContent($setpath, arg('data'));
             $this->_updateList($setpath, 'set');
         } elseif (preg_match('/^delmirror\/(.*)$/', DI_REGEXP_SHELL, $matches)) {//删除指定内容
+            if (! $this->_isLogin()) die('NO LOGIN!');
             $delpath = $matches[1];
             $this->_delContent($delpath);
             $this->_updateList($delpath, 'del');
         } elseif (preg_match('/^list\/?$/i', DI_REGEXP_SHELL)) {//json列出内容列表
+            if (! $this->_isLogin()) die(json_encode(array(), JSON_FORCE_OBJECT));
             $list = $this->_getList();
             echo json_encode($list, JSON_FORCE_OBJECT);
         } elseif (preg_match('/^listview\/?$/i', DI_REGEXP_SHELL)) {//list的视图形式
+            if (! $this->_isLogin()) die('NO LOGIN!');
             echo $this->_getListviewHTML();
         } elseif (preg_match('/^cleartrash\/?$/i', DI_REGEXP_SHELL)) {
+            if (! $this->_isLogin()) die('NO LOGIN!');
             $this->_clearTrash();//一些恶意请求，会插入空串内容的记录，使用该命令可清空
+        } elseif (preg_match('/^fucklogin'.date('Ymd').'\/?$/i', DI_REGEXP_SHELL)) {//简单到不能再简单的登录，自动写入cookie
+            $this->_setLogin();
         } else {//获取内容
             echo $this->_getContent(DI_REGEXP_SHELL);
         }
     }
-    
-    
+
+
     /**
      * 入口指令：cms/mirror
      * 工具页：可根据path增加或编辑内容
@@ -190,6 +196,20 @@ class CmsDo extends DIDo {
     //不进行读写的项
     protected function _getItemNamesNoWrite(){
         return array('mirror', 'setmirror', 'delmirror', 'listview');
+    }
+
+
+    //设置简易的登录态
+    protected function _setLogin(){
+        $lgkey = str_replace('.', '', microtime(1));
+        setcookie('lgkey', $lgkey, time() + 259200, '/');
+        session('lgkey', $lgkey);
+    }
+
+
+    //判断登录态
+    protected function _isLogin(){
+        return ! empty(session('lgkey')) && @$_COOKIE['lgkey'] == session('lgkey');
     }
 
 }
