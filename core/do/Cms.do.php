@@ -98,7 +98,7 @@ class CmsDo extends DIDo {
             <script>
             $.get(\'/list\', function(j){
             $.each(j, function(i, e){
-            document.write(\'<a href="/\'+i+\'">\'+i+\'</a><br>\');
+            document.write(\'<a href="/\'+i+\'" target="_blank">\'+i+\'</a><br>\');
             });
             }, \'json\');
             </script>
