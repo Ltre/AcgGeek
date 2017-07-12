@@ -11,11 +11,8 @@ class LogDo extends DIDo {
         exit($url);
     }
 
-    private function _appendLog($key, $str, $group){
-        $key = "{$group}/{$key}";
-        // $keySplit = explode('/', $key);
-        // foreach ($keySplit as $k => $v) $keySplit[$k] = urlencode($v);
-        // $key = join('/', $keySplit);
+
+    private function _getUrlHost(){
         if ('log.acggeek.com' == $GLOBALS['current_domain']) {
             $url = 'http://cms.acggeek.com/';
             $host = null;
@@ -23,6 +20,33 @@ class LogDo extends DIDo {
             $url = 'http://127.0.0.1/';
             $host = 'cms.acggeek.dev';
         }
+        return [$url, $host];
+    }
+
+
+    //现在向cms.acggeek写数据，必须先经过简单登录验证
+    private function _loginCms(){
+        list ($url, $host) = $this->_getUrlHost();
+        $token = 'bh5005uiyrtcv849g1lk';
+        $time = time();
+        $params = array('time' => $time, 'sign' => sha1($token.$time));
+        $this->_req($url, $params, $host);
+    }
+
+
+    private function _appendLog($key, $str, $group){
+        $key = "{$group}/{$key}";
+        // $keySplit = explode('/', $key);
+        // foreach ($keySplit as $k => $v) $keySplit[$k] = urlencode($v);
+        // $key = join('/', $keySplit);
+        /*if ('log.acggeek.com' == $GLOBALS['current_domain']) {
+            $url = 'http://cms.acggeek.com/';
+            $host = null;
+        } else {
+            $url = 'http://127.0.0.1/';
+            $host = 'cms.acggeek.dev';
+        }*/
+        list ($url, $host) = $this->_getUrlHost();
         $ret = $this->_req($url.$key, array(), $host);
         if (false !== $ret) {
             $ret .= (''==$ret?'':"\r\n\r\n") . $str;
@@ -57,6 +81,7 @@ class LogDo extends DIDo {
             $url = 'http://127.0.0.1/log/append';
             $host = 'log.acggeek.dev';
         }
+        $this->_loginCms();
         $ret = $this->_req($url, array(
             'key' => $key, 
             'str' => $str

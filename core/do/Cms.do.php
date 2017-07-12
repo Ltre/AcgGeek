@@ -209,6 +209,21 @@ class CmsDo extends DIDo {
 
     //判断登录态
     protected function _isLogin(){
+        return $this->_isRPCLogin() || $this->_isClientLogin();
+    }
+
+
+    //判断登录态：提供给远程调用方(通常是服务端调用)
+    protected function _isRPCLogin(){
+        $token = 'bh5005uiyrtcv849g1lk';
+        $time = arg('time');
+        $sign = arg('sign');
+        return sha1($token.$time) == $sign && $time - time() <= 60;
+    }
+
+
+    //判断客户端登录态
+    protected function _isClientLogin(){
         return ! empty(session('lgkey')) && @$_COOKIE['lgkey'] == session('lgkey');
     }
 
