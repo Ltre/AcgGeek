@@ -7,7 +7,7 @@ Apache HP PC in wamp 3:
 	<Directory  "e:/installedapp/zend/apache2/htdocs/acggeek/">
 		Options Indexes FollowSymLinks MultiViews
 		AllowOverride All
-		Require local
+		Require all granted
 	</Directory>
 </VirtualHost>
 
@@ -24,7 +24,7 @@ Apache Company PC in wamp 3:
 	<Directory  "d:/SERV_WORKSPACE/pub/acggeek/">
 		Options Indexes FollowSymLinks MultiViews
 		AllowOverride All
-		Require local
+		Require all granted
 	</Directory>
 </VirtualHost>
 
