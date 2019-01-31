@@ -1,8 +1,8 @@
 Apache HP PC in wamp 3:
 
 <VirtualHost *:80>
-	ServerName acggeek.dev
-    ServerAlias *.acggeek.dev
+	ServerName acggeek.fuck
+    ServerAlias *.acggeek.fuck
 	DocumentRoot e:/installedapp/zend/apache2/htdocs/acggeek
 	<Directory  "e:/installedapp/zend/apache2/htdocs/acggeek/">
 		Options Indexes FollowSymLinks MultiViews
@@ -16,10 +16,10 @@ Apache HP PC in wamp 3:
 Apache Company PC in wamp 3:
 
 <VirtualHost *:80>
-	ServerName acggeek.dev
-    ServerAlias *.acggeek.dev
-    ErrorLog "logs/acggeek.dev-error.log"
-    CustomLog "logs/acggeek.dev-access.log" common
+	ServerName acggeek.fuck
+    ServerAlias *.acggeek.fuck
+    ErrorLog "logs/acggeek.fuck-error.log"
+    CustomLog "logs/acggeek.fuck-access.log" common
 	DocumentRoot d:/SERV_WORKSPACE/pub/acggeek
 	<Directory  "d:/SERV_WORKSPACE/pub/acggeek/">
 		Options Indexes FollowSymLinks MultiViews
@@ -32,11 +32,11 @@ Apache Company PC in wamp 3:
 
 Apache HP PC in wamp2.2:
 
-NameVirtualHost acggeek.dev:80
+NameVirtualHost acggeek.fuck:80
 <VirtualHost *:80>
 	DocumentRoot E:/InstalledApp/Zend/Apache2/htdocs/AcgGeek
-	ServerName acggeek.dev
-	ServerAlias *.acggeek.dev
+	ServerName acggeek.fuck
+	ServerAlias *.acggeek.fuck
 </VirtualHost>
 
 
@@ -44,14 +44,14 @@ NameVirtualHost acggeek.dev:80
 
 Apache Company PC in wamp2.2:
 
-NameVirtualHost acggeek.dev:80
-<VirtualHost acggeek.dev:80>
-	ServerAdmin webmaster@acggeek.dev
+NameVirtualHost acggeek.fuck:80
+<VirtualHost acggeek.fuck:80>
+	ServerAdmin webmaster@acggeek.fuck
     DocumentRoot "d:/SERV_WORKSPACE/pub/acggeek"
-    ServerName acggeek.dev
-    ServerAlias *.acggeek.dev
-    ErrorLog "logs/acggeek.dev-error.log"
-    CustomLog "logs/acggeek.dev-access.log" common
+    ServerName acggeek.fuck
+    ServerAlias *.acggeek.fuck
+    ErrorLog "logs/acggeek.fuck-error.log"
+    CustomLog "logs/acggeek.fuck-access.log" common
 </VirtualHost>
 
 --------------------------------------------------------------
