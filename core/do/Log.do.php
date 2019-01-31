@@ -18,7 +18,7 @@ class LogDo extends DIDo {
             $host = null;
         } else {
             $url = 'http://127.0.0.1/';
-            $host = 'cms.acggeek.dev';
+            $host = 'cms.acggeek.fuck';
         }
         return [$url, $host];
     }
@@ -44,7 +44,7 @@ class LogDo extends DIDo {
             $host = null;
         } else {
             $url = 'http://127.0.0.1/';
-            $host = 'cms.acggeek.dev';
+            $host = 'cms.acggeek.fuck';
         }*/
         list ($url, $host) = $this->_getUrlHost();
         $ret = $this->_req($url.$key, array(), $host);
@@ -79,7 +79,7 @@ class LogDo extends DIDo {
             $host = null;
         } else {
             $url = 'http://127.0.0.1/log/append';
-            $host = 'log.acggeek.dev';
+            $host = 'log.acggeek.fuck';
         }
         $this->_loginCms();
         $ret = $this->_req($url, array(

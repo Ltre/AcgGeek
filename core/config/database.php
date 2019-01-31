@@ -8,10 +8,10 @@ $hostname = substr( ($h = $_SERVER['HTTP_HOST']), 0, (false !== ($pos = strpos($
 if (in_array($hostname, array(
     '127.0.0.1',
     'localhost',
-    'acggeek.dev',//绑定本地HOSTS
-    'cms.acggeek.dev',
-    'wx.acggeek.dev',
-    'log.acggeek.dev',
+    'acggeek.fuck',//绑定本地HOSTS
+    'cms.acggeek.fuck',
+    'wx.acggeek.fuck',
+    'log.acggeek.fuck',
 ))){
 	
     class DIDBConfig {

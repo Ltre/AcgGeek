@@ -13,10 +13,10 @@ class CmsDo extends DIDo {
     
     /**
      * 入口指令：正则指令
-     *      设置指定URL内容的接口：http://cms.acggeek.dev/?setmirror/{自定义路径}&data={自定义内容}
-     *      删除指定URL内容的接口：http://cms.acggeek.dev/?delmirror/{自定义路径}
-     *      访问指定URL的内容：http://cms.acggeek.dev/?{自定义路径}
-     *      显示列表：http://cms.acggeek.dev/?list
+     *      设置指定URL内容的接口：http://cms.acggeek.fuck/?setmirror/{自定义路径}&data={自定义内容}
+     *      删除指定URL内容的接口：http://cms.acggeek.fuck/?delmirror/{自定义路径}
+     *      访问指定URL的内容：http://cms.acggeek.fuck/?{自定义路径}
+     *      显示列表：http://cms.acggeek.fuck/?list
      */
     function start(){
         if (in_array(DI_REGEXP_SHELL, array(
@@ -57,8 +57,8 @@ class CmsDo extends DIDo {
     /**
      * 入口指令：cms/mirror
      * 工具页：可根据path增加或编辑内容
-     *      增加模式：http://acggeek.dev/?cms/mirror
-     *      编辑模式：http://acggeek.dev/?cms/mirror&path={自定义路径}
+     *      增加模式：http://acggeek.fuck/?cms/mirror
+     *      编辑模式：http://acggeek.fuck/?cms/mirror&path={自定义路径}
      */
     function mirror(){
         $path = arg('path') ?: '';

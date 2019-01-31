@@ -8,11 +8,11 @@ switch ($hostname) {
     case '127.0.0.1':
     case '192.168.1.100':
     case 'localhost':
-    case 'acggeek.dev':
+    case 'acggeek.fuck':
     case 'acggeek.webdev.duowan.com':
-    case 'cms.acggeek.dev':
-    case 'wx.acggeek.dev':
-    case 'log.acggeek.dev':
+    case 'cms.acggeek.fuck':
+    case 'wx.acggeek.fuck':
+    case 'log.acggeek.fuck':
         {
             define('DI_ROUTE_REWRITE', true);
             break;

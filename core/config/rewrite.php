@@ -39,14 +39,14 @@ switch (AG_CONST_REWRITE_MODE) {
             '://log.acggeek.com/<F>' => 'log/<F>',
             '://acggeek.com' => 'main/start',
             
-            '://www.acggeek.dev' => 'main/start',
-            '://wx.acggeek.dev' => 'wx/start',
-            '://wx.acggeek.dev/wx' => 'wx/start',
-            '://wx.acggeek.dev/<F>' => 'wx/<F>',
-            '://log.acggeek.dev' => 'log/start',
-            '://log.acggeek.dev/log' => 'log/start',
-            '://log.acggeek.dev/<F>' => 'log/<F>',
-            '://acggeek.dev' => 'main/start',
+            '://www.acggeek.fuck' => 'main/start',
+            '://wx.acggeek.fuck' => 'wx/start',
+            '://wx.acggeek.fuck/wx' => 'wx/start',
+            '://wx.acggeek.fuck/<F>' => 'wx/<F>',
+            '://log.acggeek.fuck' => 'log/start',
+            '://log.acggeek.fuck/log' => 'log/start',
+            '://log.acggeek.fuck/<F>' => 'log/<F>',
+            '://acggeek.fuck' => 'main/start',
             
             '://acggeek.webdev.duowan.com' => 'main/start',
             
