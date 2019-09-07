@@ -22,6 +22,7 @@ if [ ! -d "/home/wwwroot/acggeek/core/data" ]; then
     mkdir /home/wwwroot/acggeek/core/data;
 fi
 
+zip -r /home/wwwbackup/danmu.zip /home/wwwroot/danmu/*
 mv /home/wwwroot/acggeek /home/wwwroot/acggeek.trash;
 cp /home/wwwsrc/acggeek -r /home/wwwroot/acggeek;
 rm /home/wwwroot/acggeek/.git -rf
