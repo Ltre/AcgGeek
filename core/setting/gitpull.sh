@@ -1,3 +1,12 @@
+if [ ! -d "/home/wwwroot" ]; then
+    mkdir /home/wwwroot;
+fi;
+if [ ! -d "/home/wwwbackup" ]; then
+    mkdir /home/wwwbackup;
+fi;
+zip -r /home/wwwbackup/acggeek.zip /home/wwwroot/acggeek/*
+
+
 if [ ! -d "/home/wwwsrc" ]; then
     mkdir /home/wwwsrc;
 fi;
@@ -22,7 +31,7 @@ if [ ! -d "/home/wwwroot/acggeek/core/data" ]; then
     mkdir /home/wwwroot/acggeek/core/data;
 fi
 
-zip -r /home/wwwbackup/acggeek.zip /home/wwwroot/acggeek/*
+
 mv /home/wwwroot/acggeek /home/wwwroot/acggeek.trash;
 cp /home/wwwsrc/acggeek -r /home/wwwroot/acggeek;
 rm /home/wwwroot/acggeek/.git -rf
