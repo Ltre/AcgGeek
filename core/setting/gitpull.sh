@@ -33,7 +33,6 @@ chmod +x /home/wwwroot/acggeek/core/setting/gitpull.sh;
 rm -f -r /home/wwwroot/acggeek.trash;
 
 cd /home/wwwroot
-ll /home/wwwroot/acggeek
 
 service nginx restart
 service php-fpm reload
