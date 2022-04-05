@@ -38,6 +38,14 @@ switch (AG_CONST_REWRITE_MODE) {
             '://log.acggeek.com/log' => 'log/start',
             '://log.acggeek.com/<F>' => 'log/<F>',
             '://acggeek.com' => 'main/start',
+		    
+            '://acggeek.larele.com' => 'main/start',
+            '://wx.larele.com' => 'wx/start',
+            '://wx.larele.com/wx' => 'wx/start',
+            '://wx.larele.com/<F>' => 'wx/<F>',
+            '://log.larele.com' => 'log/start',
+            '://log.larele.com/log' => 'log/start',
+            '://log.larele.com/<F>' => 'log/<F>',
             
             '://www.acggeek.fuck' => 'main/start',
             '://wx.acggeek.fuck' => 'wx/start',
