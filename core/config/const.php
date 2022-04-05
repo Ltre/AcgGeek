@@ -11,6 +11,7 @@ switch ($hostname) {
 	case 'acggeek.com':
 	case 'www.acggeek.com':
 	case 'wx.acggeek.com':
+	case 'wx.larele.com':
     case 'log.acggeek.com':
 	case 'acggeek.fuck':
 	case 'www.acggeek.fuck':
@@ -20,6 +21,7 @@ switch ($hostname) {
 	    define('AG_CONST_REWRITE_MODE', 'normal');
 	    break;
 	case 'cms.acggeek.com': //CMS动态重写模式（正式环境）
+	case 'cms.larele.com': //CMS动态重写模式（正式环境）
 	case 'cms.acggeek.fuck': //CMS动态重写模式（测试环境）
 	    define('AG_CONST_REWRITE_MODE', 'cms');
 	    break;
