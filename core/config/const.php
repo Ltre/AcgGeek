@@ -13,6 +13,7 @@ switch ($hostname) {
 	case 'wx.acggeek.com':
 	case 'wx.larele.com':
     case 'log.acggeek.com':
+	case 'log.larele.com':
 	case 'acggeek.fuck':
 	case 'www.acggeek.fuck':
 	case 'wx.acggeek.fuck':
