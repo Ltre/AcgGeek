@@ -22,6 +22,9 @@ switch ($hostname) {
     case 'cms.acggeek.com':
     case 'wx.acggeek.com':
     case 'log.acggeek.com':
+    case 'cms.larele.com':
+    case 'wx.larele.com':
+    case 'log.larele.com':
         {
             define('DI_DEBUG_MODE', false);
             define('DI_IO_RWFUNC_ENABLE', true);
