@@ -22,6 +22,7 @@ switch ($hostname) {
     case 'cms.acggeek.com':
     case 'wx.acggeek.com':
     case 'log.acggeek.com':
+    //计划迁移到larele
     case 'cms.larele.com':
     case 'wx.larele.com':
     case 'log.larele.com':

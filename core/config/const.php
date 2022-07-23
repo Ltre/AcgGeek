@@ -8,26 +8,26 @@ $hostname = substr( ($h = $_SERVER['HTTP_HOST']), 0, (false !== ($pos = strpos($
 switch ($hostname) {
     case 'localhost': //正常重写模式
     case '127.0.0.1':
-	case 'acggeek.com':
-	case 'www.acggeek.com':
-	case 'wx.acggeek.com':
-	case 'wx.larele.com':
+    case 'acggeek.com':
+    case 'www.acggeek.com':
+    case 'wx.acggeek.com':
+    case 'wx.larele.com':
     case 'log.acggeek.com':
-	case 'log.larele.com':
-	case 'acggeek.fuck':
-	case 'www.acggeek.fuck':
-	case 'wx.acggeek.fuck':
+    case 'log.larele.com':
+    case 'acggeek.fuck':
+    case 'www.acggeek.fuck':
+    case 'wx.acggeek.fuck':
     case 'log.acggeek.fuck':
-	case 'acggeek.webdev.duowan.com':
-	    define('AG_CONST_REWRITE_MODE', 'normal');
-	    break;
-	case 'cms.acggeek.com': //CMS动态重写模式（正式环境）
-	case 'cms.larele.com': //CMS动态重写模式（正式环境）
-	case 'cms.acggeek.fuck': //CMS动态重写模式（测试环境）
-	    define('AG_CONST_REWRITE_MODE', 'cms');
-	    break;
-	default:
-	    die('Invalid hostname for setup rewrite rules!');
+    case 'acggeek.webdev.duowan.com':
+    	define('AG_CONST_REWRITE_MODE', 'normal');
+	break;
+    case 'cms.acggeek.com': //CMS动态重写模式（正式环境）
+    case 'cms.larele.com': //CMS动态重写模式（正式环境）
+    case 'cms.acggeek.fuck': //CMS动态重写模式（测试环境）
+    	define('AG_CONST_REWRITE_MODE', 'cms');
+    	break;
+    default:
+    	die('Invalid hostname for setup rewrite rules!');
 }
 
 /**

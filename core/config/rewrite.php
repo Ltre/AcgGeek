@@ -39,6 +39,7 @@ switch (AG_CONST_REWRITE_MODE) {
             '://log.acggeek.com/<F>' => 'log/<F>',
             '://acggeek.com' => 'main/start',
 		    
+	    //计划迁移到larele
             '://acggeek.larele.com' => 'main/start',
             '://wx.larele.com' => 'wx/start',
             '://wx.larele.com/wx' => 'wx/start',

@@ -92,7 +92,7 @@ class CmsDo extends DIDo {
         $html = '<!DOCTYPE html>
             <html>
             <head>
-            <script src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+            <script src="https://pub.ouj.com/common/js/jquery.js"></script>
             </head>
             <body>
             <script>

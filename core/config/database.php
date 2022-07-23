@@ -55,6 +55,7 @@ if (in_array($hostname, array(
     'cms.acggeek.com',
     'wx.acggeek.com',
     'log.acggeek.com',
+    //计划迁移到larele
     'cms.larele.com',
     'wx.larele.com',
     'log.larele.com',
