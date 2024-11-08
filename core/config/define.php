@@ -23,9 +23,9 @@ switch ($hostname) {
     case 'wx.acggeek.com':
     case 'log.acggeek.com':
     //计划迁移到larele
-    case 'cms.larele.com':
-    case 'wx.larele.com':
-    case 'log.larele.com':
+    case 'cms-acggeek.larele.com':
+    case 'wx-acggeek.larele.com':
+    case 'log-acggek.larele.com':
         {
             define('DI_DEBUG_MODE', false);
             define('DI_IO_RWFUNC_ENABLE', true);
