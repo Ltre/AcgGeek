@@ -30,7 +30,7 @@ class WxConf extends DIEntity {
     
     
     static function getToken(){
-        return @file_get_contents(WX_CONF_FILE_TOKEN) ?: '';
+        return @trim(file_get_contents(WX_CONF_FILE_TOKEN)) ?: '';
     }
     
     
