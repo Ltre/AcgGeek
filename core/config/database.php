@@ -57,9 +57,9 @@ if (in_array($hostname, array(
     'log.acggeek.com',
     //计划迁移到larele
     'acggeek.larele.com',
-    'cms.acggeek.larele.com',
-    'wx.acggeek.larele.com',
-    'log.acggeek.larele.com',
+    'cms-acggeek.larele.com',
+    'wx-acggeek.larele.com',
+    'log-acggeek.larele.com',
 ))) {
     
     class DIDBConfig {
